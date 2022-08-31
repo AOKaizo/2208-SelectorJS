@@ -16,6 +16,15 @@ class $ {
         (element) => element.className === CSSId.slice(CSSId.indexOf(".") + 1)
       );
     }
+    if (CSSId.includes(">")) {
+      let preppedTag = document.getElementsByTagName(
+        CSSId.slice(0, CSSId.indexOf(">") - 1)
+      );
+      console.log([preppedTag])
+      storedTag = [...preppedTag].filter(
+        (element) => [...element.children].includes(CSSId.slice(CSSId.indexOf(">") + 2))
+      );
+    }
     if (CSSId[0] === ".") {
       this.elements = storedClass;
     } else if (CSSId[0] === "#") {
